@@ -1,0 +1,22 @@
+using UnityEngine;
+public class playerController : MonoBehaviour
+{
+    public GameObject player;
+    public float movementSpeed;
+    public float speedOfDash = 10.5f;
+   
+    void Update()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        player.transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, verticalInput * movementSpeed * Time.deltaTime, 0);
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+
+            player.transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime * speedOfDash , verticalInput * movementSpeed * Time.deltaTime * speedOfDash, 0);
+
+        }
+    }  
+}
